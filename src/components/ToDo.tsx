@@ -1,7 +1,7 @@
 import { ReactFragment } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "../atoms";
 
 const Button = styled.button`
   padding: 5px 10px;
@@ -31,18 +31,18 @@ function ToDo({ text, category, id }: IToDo) {
   return (
     <li>
       <span>{text}</span>
-      {category !== "DOING" && (
-        <Button name="DOING" onClick={onClick}>
+      {category !== Categories.DOING && (
+        <Button name={Categories.DOING} onClick={onClick}>
           Doing
         </Button>
       )}
-      {category !== "TO_DO" && (
-        <Button name="TO_DO" onClick={onClick}>
+      {category !== Categories.TO_DO && (
+        <Button name={Categories.TO_DO} onClick={onClick}>
           To Do
         </Button>
       )}
-      {category !== "DONE" && (
-        <Button name="DONE" onClick={onClick}>
+      {category !== Categories.DONE && (
+        <Button name={Categories.DONE} onClick={onClick}>
           Done
         </Button>
       )}
