@@ -1,5 +1,5 @@
-import { ReactFragment } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import React from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { Categories, IToDo, toDoState } from "../atoms";
 
@@ -27,6 +27,12 @@ function ToDo({ text, category, id }: IToDo) {
       ];
     });
   };
+  const deleteFn = () => {
+    setToDos((oldToDos) => {
+      const newToDos = oldToDos.filter((todo) => todo.id !== id);
+      return newToDos;
+    });
+  };
 
   return (
     <li>
@@ -46,6 +52,7 @@ function ToDo({ text, category, id }: IToDo) {
           Done
         </Button>
       )}
+      <Button onClick={deleteFn}>Delete</Button>
     </li>
   );
 }
